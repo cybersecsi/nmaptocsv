@@ -45,3 +45,9 @@ nmaptocsv = "nmaptocsv.nmaptocsv:main"
 source = "versioningit"
 
 [tool.versioningit]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/"]

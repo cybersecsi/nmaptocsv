@@ -1,5 +1,8 @@
 [build-system]
-requires = ["hatchling >= 1.26"]
+requires = [
+  "hatchling >= 1.26",
+  "versioningit"
+]
 build-backend = "hatchling.build"
 
 [project]
@@ -11,7 +14,10 @@ dependencies = [
   "argparse"
 ]
 authors = [
-    { name = "Emanuele Galdi", email = "emanuele.galdi@secsi.io" }
+    { name = "Thomas Debize", email = "tdebize@mail.com" }
+]
+maintainers = [
+  { name = "Emanuele Galdi", email = "emanuele.galdi@secsi.io" }
 ]
 license = { text = "MIT" }
 readme = "README.md"
@@ -34,3 +40,8 @@ Repository = "https://github.com/cybersecsi/nmaptocsv"
 
 [project.scripts]
 nmaptocsv = "nmaptocsv.nmaptocsv:main"
+
+[tool.hatch.version]
+source = "versioningit"
+
+[tool.versioningit]

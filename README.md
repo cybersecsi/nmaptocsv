@@ -1,3 +1,5 @@
+[![Upload Python Package](https://github.com/cybersecsi/nmaptocsv/actions/workflows/python-publish.yml/badge.svg)](https://github.com/cybersecsi/nmaptocsv/actions/workflows/python-publish.yml)
+
 NmaptoCSV
 ============
 
@@ -37,7 +39,7 @@ Output parameters:
                         CSV output filename (stdout if not specified)
   -f FORMAT, --format FORMAT
                         CSV column format { fqdn, rdns, hop_number, ip,
-                        mac_address, mac_vendor, port, protocol, os, script,
+                        mac_address, mac_vendor, port, protocol, state, os, script,
                         service, version } (default: ip-fqdn-port-protocol-
                         service-version)
   -S, --script          Adds the script column in output, alias for -f "ip-
@@ -108,21 +110,22 @@ IP;FQDN
 
 
 $ cat scan.gnmap | python nmaptocsv.py 
-IP;FQDN;PORT;PROTOCOL;SERVICE;VERSION
-10.0.0.1;test1.local;23;tcp;telnet;Cisco router telnetd
+IP;FQDN;PORT;PROTOCOL;STATE;SERVICE;VERSION
+10.0.0.1;test1.local;23;tcp;open;telnet;Cisco router telnetd
 
-10.0.0.2;test2.local;23;tcp;telnet;Cisco router telnetd
+10.0.0.2;test2.local;23;tcp;open;telnet;Cisco router telnetd
 
-10.0.0.3;test3.local;23;tcp;telnet;Cisco router telnetd
+10.0.0.3;test3.local;23;tcp;open;telnet;Cisco router telnetd
 
-10.0.0.50;test50.local;22;tcp;ssh;OpenSSH 3.8.1p1 Debian 8.sarge.6 (protocol 2.0)
-10.0.0.50;test50.local;80;tcp;http;Apache httpd 1.3.33 ((Debian GNU|Linux) PHP|4.3.10-19)
-10.0.0.50;test50.local;111;tcp;rpcbind (rpcbind V2);(rpcbind:100000*2-2)/2 (rpc #100000)
-10.0.0.50;test50.local;113;tcp;ident;
-10.0.0.50;test50.local;684;tcp;status (status V1);(status:100024*1-1)/1 (rpc #100024)
-10.0.0.50;test50.local;5432;tcp;postgresql;PostgreSQL DB (French)
+10.0.0.50;test50.local;22;tcp;open;ssh;OpenSSH 3.8.1p1 Debian 8.sarge.6 (protocol 2.0)
+10.0.0.50;test50.local;80;tcp;open;http;Apache httpd 1.3.33 ((Debian GNU|Linux) PHP|4.3.10-19)
+10.0.0.50;test50.local;111;tcp;open;rpcbind (rpcbind V2);(rpcbind:100000*2-2)/2 (rpc #100000)
+10.0.0.50;test50.local;113;tcp;open;ident;
+10.0.0.50;test50.local;684;tcp;open;status (status V1);(status:100024*1-1)/1 (rpc #100024)
+10.0.0.50;test50.local;5432;tcp;open;postgresql;PostgreSQL DB (French)
 
-10.0.0.100;test100.local;5432;tcp;postgresql;PostgreSQL DB (French)
+10.0.0.100;test100.local;80;tcp;closed;http;
+10.0.0.100;test100.local;5432;tcp;open;postgresql;PostgreSQL DB (French)
 ```
 
 Dependencies and installation
@@ -134,6 +137,7 @@ Dependencies and installation
 
 Changelog
 ---------
+* version 1.7 - 09/07/2025: Publishing package on PyPI and added "State" columns from nmap output
 * version 1.6 - 06/13/2019: Python 3 support
 * version 1.5 - 09/30/2018: few bugs fixed in XML parsing + script alias format added
 * version 1.4 - 08/16/2018: few bugs fixed + XML parsing implementation
@@ -153,6 +157,10 @@ See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with nmaptocsv. 
 If not, see http://www.gnu.org/licenses/.
 
-Contact
+Author
 -------
 * Thomas Debize < tdebize at mail d0t com >
+
+Contact
+-------
+* Emanuele Galdi < emanuele.galdi at secsi d0t io >

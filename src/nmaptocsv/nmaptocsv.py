@@ -506,10 +506,13 @@ def parse_xml(xml_file):
             
             # Ports (protocol, number, state, service, version) and script output
             open_ports = host.findall("./ports/port/state[@state='open']/..")
+            open_ports.extend(host.findall("./ports/port/state[@state='open|filtered']/.."))
+            open_ports.sort(key=lambda x: int(x.get("portid")))
+            
             for port in open_ports:
                 protocol = port.get('protocol')
                 number = port.get('portid')
-                state = port.get('state')
+                state = port.find("state").get("state")
                 new_port = Port(number, protocol, state)
                 
                 service = port.find('service')

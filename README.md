@@ -137,6 +137,7 @@ Dependencies and installation
 
 Changelog
 ---------
+* version 1.7.1 - 15/07/2025: adding "State" clomun support on nmap XML input
 * version 1.7 - 09/07/2025: Publishing package on PyPI and added "State" columns from nmap output
 * version 1.6 - 06/13/2019: Python 3 support
 * version 1.5 - 09/30/2018: few bugs fixed in XML parsing + script alias format added

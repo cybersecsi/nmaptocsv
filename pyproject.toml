@@ -47,7 +47,7 @@ source = "versioningit"
 [tool.versioningit]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["src/nmaptocsv"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src/"]
+include = ["src/nmaptocsv/"]
